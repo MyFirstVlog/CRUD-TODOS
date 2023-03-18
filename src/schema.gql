@@ -2,10 +2,17 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type Todos {
+  id: Int!
+  description: String!
+  done: Boolean!
+}
+
 type Query {
   """Hello world which returns "Hello World" message"""
   Hello: String!
 
   """Random number from 0 to specified number"""
   Random(to: Int): Int!
+  findAll: [Todos!]!
 }
