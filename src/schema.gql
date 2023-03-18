@@ -3,5 +3,9 @@
 # ------------------------------------------------------
 
 type Query {
-  helloWorld: String!
+  """Hello world which returns "Hello World" message"""
+  Hello: String!
+
+  """Random number from 0 to specified number"""
+  Random(to: Int): Int!
 }
