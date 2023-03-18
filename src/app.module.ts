@@ -4,19 +4,19 @@ import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 
 import { TodoModule } from './todo/todo.module';
 import { join } from 'path';
-import { ApolloServerPluginLandingPageLocalDefault } from 'apollo-server-core';
 import { HelloWorldModule } from './hello-world/hello-world.module';
+import { ApolloServerPluginLandingPageLocalDefault } from  '@apollo/server/plugin/landingPage/default';
 
 @Module({
   imports: [
     TodoModule, 
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
-      // playground: false, //Para deshabilitar la interfaz grafica
+      playground: false, //Para deshabilitar la interfaz grafica
       autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
-      // plugins: [
-      //   ApolloServerPluginLandingPageLocalDefault()
-      // ]
+      plugins: [
+        ApolloServerPluginLandingPageLocalDefault()
+      ]
     }), HelloWorldModule,
   ],
   controllers: [],
