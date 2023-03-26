@@ -14,5 +14,24 @@ type Query {
 
   """Random number from 0 to specified number"""
   Random(to: Int): Int!
-  findAll: [Todos!]!
+  todos: [Todos!]!
+  todo(id: Int!): Todos!
+}
+
+type Mutation {
+  createTodo(createTodoInput: CreateTodoInput!): Todos!
+  updateTodo(updateTodoInput: UpdateTodoInput!): Todos!
+}
+
+input CreateTodoInput {
+  """What needs to be done"""
+  description: String!
+}
+
+input UpdateTodoInput {
+  id: Int!
+
+  """What needs to be done"""
+  description: String
+  done: Boolean
 }
