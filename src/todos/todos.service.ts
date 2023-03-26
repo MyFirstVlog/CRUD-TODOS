@@ -40,8 +40,16 @@ export class TodosService {
 
         const {description, done} = updateTodoInput;
 
-        todo.description = description;
-        todo.done = done;
+        if(description) todo.description = description;
+        if(done !== undefined) todo.done = done;
+
+        return todo;
+    }
+
+    remove(id: number){
+        const todo = this.findOne(id);
+
+        this.todos = this.todos.filter(todo => todo.id !== id);
 
         return todo;
     }
