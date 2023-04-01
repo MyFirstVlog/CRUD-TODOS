@@ -14,7 +14,10 @@ type Query {
 
   """Random number from 0 to specified number"""
   Random(to: Int): Int!
-  todos: [Todos!]!
+  todos(
+    """Status filter"""
+    status: Boolean
+  ): [Todos!]!
   todo(id: Int!): Todos!
 }
 

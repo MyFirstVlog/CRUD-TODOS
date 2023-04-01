@@ -3,6 +3,7 @@ import { Todos } from './todos.entity';
 import { TodosService } from './todos.service';
 import { CreateTodoInput } from './dto/inputs/create-todo.input';
 import { UpdateTodoInput } from './dto/inputs/update-todo.input';
+import { StatusArgs } from './dto/args/status-todos.args';
 
 @Resolver()
 export class TodosResolver {
@@ -12,8 +13,10 @@ export class TodosResolver {
   ){}
 
   @Query(() => [Todos], {name: "todos"})
-  findAll(): Todos[]{
-    return this.todoService.findAlll();
+  findAll(
+    @Args() statusArgs: StatusArgs
+  ): Todos[]{
+    return this.todoService.findAll(statusArgs);
   }
 
   @Query(() => Todos, {name: "todo"})
