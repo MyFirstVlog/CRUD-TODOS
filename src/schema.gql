@@ -19,6 +19,9 @@ type Query {
     status: Boolean
   ): [Todos!]!
   todo(id: Int!): Todos!
+  totalTodos: Int!
+  completedTodos: Int!
+  pendingTodos: Int!
 }
 
 type Mutation {

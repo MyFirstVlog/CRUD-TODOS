@@ -47,4 +47,19 @@ export class TodosResolver {
   ){
     return this.todoService.remove(id);
   }
+
+  @Query(() => Int, {name: "totalTodos"})
+  totalTodos(){
+    return this.todoService.getAllTodos
+  }
+
+  @Query(() => Int, {name: "completedTodos"})
+  completedTodos(){
+    return this.todoService.getCompletedTodos
+  }
+  
+  @Query(() => Int, {name: "pendingTodos"})
+  pendingTodos(){
+    return this.todoService.getPendingTodos
+  }
 }

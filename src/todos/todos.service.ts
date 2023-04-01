@@ -10,7 +10,20 @@ export class TodosService {
         {id: 1, description: "Piedra del alma", done: false},
         {id: 2, description: "Piedra del espacio", done: true},
         {id: 3, description: "Piedra del poder", done: false},
+        {id: 4, description: "Piedra del tiempo", done: false},
     ];
+
+    get getAllTodos(){
+        return this.todos.length;
+    }
+
+    get getCompletedTodos(){
+        return this.todos.filter(todo => todo.done === true).length;
+    }
+
+    get getPendingTodos(){
+        return this.todos.filter(todo => todo.done === false).length;
+    }
 
     findAll(statusArgs: StatusArgs): Todos[]{
         
