@@ -4,6 +4,7 @@ import { TodosService } from './todos.service';
 import { CreateTodoInput } from './dto/inputs/create-todo.input';
 import { UpdateTodoInput } from './dto/inputs/update-todo.input';
 import { StatusArgs } from './dto/args/status-todos.args';
+import { AggregationsType } from './dto/types/aggregations.type';
 
 @Resolver()
 export class TodosResolver {
@@ -61,5 +62,15 @@ export class TodosResolver {
   @Query(() => Int, {name: "pendingTodos"})
   pendingTodos(){
     return this.todoService.getPendingTodos
+  }
+
+  @Query(() => AggregationsType)
+  aggregationsType(): AggregationsType{
+    return {
+      all: this.todoService.getAllTodos,
+      completed: this.todoService.getCompletedTodos,
+      pending: this.todoService.getPendingTodos,
+      allTodosNumber: this.todoService.getCompletedTodos,
+    }
   }
 }
